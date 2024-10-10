@@ -1,10 +1,11 @@
 package com.example.springbootreviews.service;
 
-import com.example.springbootreviews.domain.Member;
+import com.example.springbootreviews.entity.Member;
 import com.example.springbootreviews.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.annotation.Commit;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;

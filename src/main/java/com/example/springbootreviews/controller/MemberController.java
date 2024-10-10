@@ -1,7 +1,7 @@
 package com.example.springbootreviews.controller;
 
 import org.springframework.ui.Model;
-import com.example.springbootreviews.domain.Member;
+import com.example.springbootreviews.entity.Member;
 import com.example.springbootreviews.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,18 +1,16 @@
 package com.example.springbootreviews.service;
 
-import com.example.springbootreviews.domain.Member;
+import com.example.springbootreviews.entity.Member;
 import com.example.springbootreviews.repository.MemberRepository;
-import com.example.springbootreviews.repository.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -26,9 +24,9 @@ public class MemberService {
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
-                        .ifPresent(m -> {
-                            throw new IllegalStateException("이미 존재하는 회원");
-                        });
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원");
+                });
     }
 
     // 전체 회원 조회

@@ -1,7 +1,6 @@
 package com.example.springbootreviews.repository;
 
-import com.example.springbootreviews.domain.Member;
-import org.springframework.stereotype.Repository;
+import com.example.springbootreviews.entity.Member;
 
 import java.util.*;
 
