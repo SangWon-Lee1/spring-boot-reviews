@@ -6,6 +6,7 @@ import com.example.springbootreviews.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -37,6 +38,10 @@ public class CustomerService {
         customerDTO.setCreatedAt(customer.getCreatedAt());
         customerDTO.setUpdatedAt(customer.getUpdatedAt());
         return customerDTO;
+    }
+
+    public Optional<CustomerDTO> getCustomerById(Long id) {
+        return customerRepository.findById(id).map(this::convertToDTO);
     }
 
     private void validateCustomer(CustomerDTO customerDTO) {
