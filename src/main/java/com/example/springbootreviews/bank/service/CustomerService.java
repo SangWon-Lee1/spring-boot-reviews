@@ -1,11 +1,13 @@
 package com.example.springbootreviews.bank.service;
 
 import com.example.springbootreviews.bank.entity.Customer;
+import com.example.springbootreviews.bank.exception.CustomerValidationException;
 import com.example.springbootreviews.bank.model.CustomerDTO;
 import com.example.springbootreviews.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -46,13 +48,21 @@ public class CustomerService {
 
     private void validateCustomer(CustomerDTO customerDTO) {
         if (customerDTO.getCustomerId() == null || customerDTO.getCustomerId().isEmpty()) {
-            throw new IllegalArgumentException("Id 값이 비어있음");
+            throw new CustomerValidationException("Id 값이 비어있음");
         }
         if (customerDTO.getCustomerName() == null || customerDTO.getCustomerName().isEmpty()) {
-            throw new IllegalArgumentException("이름이 비어있음");
+            throw new CustomerValidationException("이름이 비어있음");
         }
         if (customerDTO.getPassword() == null || !PASSWORD_PATTERN.matcher(customerDTO.getPassword()).matches()) {
-            throw new IllegalArgumentException("비밀번호는 최소 8자 이상, 숫자, 대문자, 특수 문자를 포함해야 합니다.");
+            throw new CustomerValidationException("비밀번호는 최소 8자 이상, 숫자, 대문자, 특수 문자를 포함해야 합니다.");
         }
+    }
+
+    public void deleteCustomer(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerValidationException("없는 고객"));
+        customer.setDeletedAt(LocalDateTime.now());
+        customer.setDeleted(true);
+        customerRepository.save(customer);
     }
 }
