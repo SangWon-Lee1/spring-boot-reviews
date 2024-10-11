@@ -1,7 +1,7 @@
-package com.example.springbootreviews.controller;
+package com.example.springbootreviews.review.controller;
 
-import com.example.springbootreviews.entity.User;
-import com.example.springbootreviews.service.UserService;
+import com.example.springbootreviews.review.entity.User;
+import com.example.springbootreviews.review.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

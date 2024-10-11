@@ -1,4 +1,4 @@
-package com.example.springbootreviews.entity;
+package com.example.springbootreviews.review.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package com.example.springbootreviews.repository;
 
-import com.example.springbootreviews.entity.Member;
+import com.example.springbootreviews.review.entity.Member;
+import com.example.springbootreviews.review.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 

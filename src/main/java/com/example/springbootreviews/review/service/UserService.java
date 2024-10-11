@@ -1,7 +1,7 @@
-package com.example.springbootreviews.service;
+package com.example.springbootreviews.review.service;
 
-import com.example.springbootreviews.entity.User;
-import com.example.springbootreviews.repository.UserRepository;
+import com.example.springbootreviews.review.entity.User;
+import com.example.springbootreviews.review.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

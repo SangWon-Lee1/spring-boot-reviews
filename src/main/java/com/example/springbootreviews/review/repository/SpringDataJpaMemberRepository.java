@@ -1,6 +1,6 @@
-package com.example.springbootreviews.repository;
+package com.example.springbootreviews.review.repository;
 
-import com.example.springbootreviews.entity.Member;
+import com.example.springbootreviews.review.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

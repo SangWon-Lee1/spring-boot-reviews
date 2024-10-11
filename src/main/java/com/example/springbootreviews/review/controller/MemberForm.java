@@ -1,4 +1,4 @@
-package com.example.springbootreviews.controller;
+package com.example.springbootreviews.review.controller;
 
 public class MemberForm {
     private String name;

@@ -1,14 +1,9 @@
-package com.example.springbootreviews.config;
+package com.example.springbootreviews.review.config;
 
-import com.example.springbootreviews.repository.JdbcTemplateMemberRepository;
-import com.example.springbootreviews.repository.JpaMemberRepository;
-import com.example.springbootreviews.repository.MemberRepository;
-import com.example.springbootreviews.service.MemberService;
-import jakarta.persistence.EntityManager;
+import com.example.springbootreviews.review.repository.MemberRepository;
+import com.example.springbootreviews.review.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {

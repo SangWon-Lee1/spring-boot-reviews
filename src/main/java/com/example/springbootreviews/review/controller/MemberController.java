@@ -1,8 +1,8 @@
-package com.example.springbootreviews.controller;
+package com.example.springbootreviews.review.controller;
 
+import com.example.springbootreviews.review.entity.Member;
+import com.example.springbootreviews.review.service.MemberService;
 import org.springframework.ui.Model;
-import com.example.springbootreviews.entity.Member;
-import com.example.springbootreviews.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

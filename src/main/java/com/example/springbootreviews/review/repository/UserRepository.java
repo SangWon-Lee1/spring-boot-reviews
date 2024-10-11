@@ -1,6 +1,6 @@
-package com.example.springbootreviews.repository;
+package com.example.springbootreviews.review.repository;
 
-import com.example.springbootreviews.entity.User;
+import com.example.springbootreviews.review.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.example.springbootreviews.repository;
+package com.example.springbootreviews.review.repository;
 
-import com.example.springbootreviews.entity.Member;
+import com.example.springbootreviews.review.entity.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

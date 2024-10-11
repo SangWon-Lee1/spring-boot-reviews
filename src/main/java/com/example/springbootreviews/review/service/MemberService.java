@@ -1,7 +1,7 @@
-package com.example.springbootreviews.service;
+package com.example.springbootreviews.review.service;
 
-import com.example.springbootreviews.entity.Member;
-import com.example.springbootreviews.repository.MemberRepository;
+import com.example.springbootreviews.review.entity.Member;
+import com.example.springbootreviews.review.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
