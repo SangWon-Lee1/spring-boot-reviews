@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class CustomerDTO {
     private String customerId;
     private String customerName;
+    private String password;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
