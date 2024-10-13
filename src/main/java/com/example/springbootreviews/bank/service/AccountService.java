@@ -8,6 +8,7 @@ import com.example.springbootreviews.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -45,5 +46,13 @@ public class AccountService {
 
     public Optional<AccountDTO> getAccountById(Long id) {
         return accountRepository.findById(id).map(this::convertToDTO);
+    }
+
+    public void deleteAccount(Long id) {
+        Account account = accountRepository.findById(id)
+                .orElseThrow();
+        account.setDeletedAt(LocalDateTime.now());
+        account.setDeleted(true);
+        accountRepository.save(account);
     }
 }
