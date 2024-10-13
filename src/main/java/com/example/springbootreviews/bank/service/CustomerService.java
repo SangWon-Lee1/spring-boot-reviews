@@ -1,6 +1,7 @@
 package com.example.springbootreviews.bank.service;
 
 import com.example.springbootreviews.bank.entity.Customer;
+import com.example.springbootreviews.bank.exception.CustomerNotFoundException;
 import com.example.springbootreviews.bank.exception.CustomerValidationException;
 import com.example.springbootreviews.bank.model.CustomerDTO;
 import com.example.springbootreviews.bank.repository.CustomerRepository;
@@ -60,7 +61,7 @@ public class CustomerService {
 
     public void deleteCustomer(Long id) {
         Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new CustomerValidationException("없는 고객"));
+                .orElseThrow(() -> new CustomerNotFoundException("없는 고객"));
         customer.setDeletedAt(LocalDateTime.now());
         customer.setDeleted(true);
         customerRepository.save(customer);

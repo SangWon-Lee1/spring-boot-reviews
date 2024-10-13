@@ -2,6 +2,8 @@ package com.example.springbootreviews.bank.service;
 
 import com.example.springbootreviews.bank.entity.Account;
 import com.example.springbootreviews.bank.entity.Customer;
+import com.example.springbootreviews.bank.exception.AccountNotFoundException;
+import com.example.springbootreviews.bank.exception.CustomerNotFoundException;
 import com.example.springbootreviews.bank.model.AccountDTO;
 import com.example.springbootreviews.bank.repository.AccountRepository;
 import com.example.springbootreviews.bank.repository.CustomerRepository;
@@ -26,7 +28,7 @@ public class AccountService {
         Account account = new Account();
         account.setAccountId(accountDTO.getAccountId());
         Customer customer = customerRepository.findByCustomerId(accountDTO.getCustomerId())
-                .orElseThrow(() -> new IllegalArgumentException("없는 고객"));
+                .orElseThrow(() -> new CustomerNotFoundException("없는 고객"));
         account.setCustomer(customer);
         account.setBalance(accountDTO.getBalance());
         account.setCreatedAt(accountDTO.getCreatedAt());
@@ -50,7 +52,7 @@ public class AccountService {
 
     public void deleteAccount(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new AccountNotFoundException("없는 계좌"));
         account.setDeletedAt(LocalDateTime.now());
         account.setDeleted(true);
         accountRepository.save(account);

@@ -1,5 +1,7 @@
 package com.example.springbootreviews.bank.controller;
 
+import com.example.springbootreviews.bank.exception.AccountNotFoundException;
+import com.example.springbootreviews.bank.exception.CustomerNotFoundException;
 import com.example.springbootreviews.bank.exception.CustomerValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,20 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleCustomerValidationException(CustomerValidationException e) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST) // HTTP상태코드(ex 404)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<String> handleCustomerNotFoundException(CustomerNotFoundException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(AccountNotFoundException.class)
+    public ResponseEntity<String> handleAccountNotFoundException(AccountNotFoundException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(e.getMessage());
     }
 }
