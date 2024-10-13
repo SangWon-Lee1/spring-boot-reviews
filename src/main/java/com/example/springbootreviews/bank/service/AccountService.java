@@ -8,6 +8,8 @@ import com.example.springbootreviews.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountService {
     private AccountRepository accountRepository;
@@ -39,5 +41,9 @@ public class AccountService {
         accountDTO.setBalance(account.getBalance());
         accountDTO.setCreatedAt(account.getCreatedAt());
         return accountDTO;
+    }
+
+    public Optional<AccountDTO> getAccountById(Long id) {
+        return accountRepository.findById(id).map(this::convertToDTO);
     }
 }
