@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>은행 시스템</title>
+</head>
+<body>
+    <h1>은행 시스템</h1>
+
+    <h2>고객 등록</h2>
+    <form action="/customers" method="POST">
+        <input name="customerId" placeholder="고객 ID" required />
+        <input name="customerName" placeholder="이름" required />
+        <input name="password" type="password" placeholder="비밀번호" required />
+        <button type="submit">등록</button>
+    </form>
+
+    <h2>계좌 생성</h2>
+    <form action="/accounts" method="POST">
+        <input name="accountId" placeholder="계좌 ID" required />
+        <input name="customerId" placeholder="고객 ID" required />
+        <input name="balance" placeholder="초기 잔액" required />
+        <button type="submit">계좌 생성</button>
+    </form>
+
+    <h2>입금, 출금, 이체</h2>
+    <form action="/transactions" method="POST">
+        <input name="accountId" placeholder="계좌 ID" required />
+        <input name="targetAccountId" placeholder="대상 계좌 ID" />
+        <input name="type" placeholder="거래 유형 (DEPOSIT, WITHDRAWAL, TRANSFER)" required />
+        <input name="amount" placeholder="거래 금액" required />
+        <button type="submit">거래 생성</button>
+    </form>
+
+    <h2>고객 조회</h2>
+    <form action="/customers" method="GET">
+        <input name="customerId" placeholder="고객 ID" required />
+        <button type="submit">조회</button>
+    </form>
+
+    <h2>계좌 조회</h2>
+    <form action="/accounts" method="GET">
+        <input name="accountId" placeholder="계좌 ID" required />
+        <button type="submit">조회</button>
+    </form>
+
+    <h2>거래 내역 조회</h2>
+    <form action="/transactions" method="GET">
+        <input name="accountId" placeholder="계좌 ID" required />
+        <button type="submit">조회</button>
+    </form>
+</body>
+</html>
