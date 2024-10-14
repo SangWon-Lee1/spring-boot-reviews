@@ -10,6 +10,7 @@ import com.example.springbootreviews.bank.repository.AccountRepository;
 import com.example.springbootreviews.bank.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -24,6 +25,7 @@ public class TransactionService {
         this.accountRepository = accountRepository;
     }
 
+    @Transactional
     public TransactionDTO depositWithdrawal(Long accountId, Long targetAccountId, TransactionType transactionType, BigDecimal amount) {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new AccountNotFoundException("없는 계좌"));
