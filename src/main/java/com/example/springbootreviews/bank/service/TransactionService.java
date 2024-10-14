@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionService {
@@ -60,6 +62,12 @@ public class TransactionService {
         accountRepository.save(account);
         Transaction savedTransaction = transactionRepository.save(transaction);
         return convertToDTO(savedTransaction);
+    }
+
+    public List<TransactionDTO> getTransactionHistory(Long accountId) {
+        List<Transaction> transactions = transactionRepository.findByFromAccountId(accountId, accountId);
+        return transactions.stream()
+                .map(this::convertToDTO).collect(Collectors.toList());
     }
 
     public TransactionDTO convertToDTO(Transaction transaction) {
