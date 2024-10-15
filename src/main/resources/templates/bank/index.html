@@ -33,19 +33,19 @@
     </form>
 
     <h2>고객 조회</h2>
-    <form action="/customers" method="GET">
+    <form action="/customers/{id}" method="GET">
         <input name="customerId" placeholder="고객 ID" required />
         <button type="submit">조회</button>
     </form>
 
     <h2>계좌 조회</h2>
-    <form action="/accounts" method="GET">
+    <form action="/accounts/{id}" method="GET">
         <input name="accountId" placeholder="계좌 ID" required />
         <button type="submit">조회</button>
     </form>
 
     <h2>거래 내역 조회</h2>
-    <form action="/transactions" method="GET">
+    <form action="/transactions/{id}" method="GET">
         <input name="accountId" placeholder="계좌 ID" required />
         <button type="submit">조회</button>
     </form>

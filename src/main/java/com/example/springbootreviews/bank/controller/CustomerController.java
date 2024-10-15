@@ -24,14 +24,14 @@ public class CustomerController {
         return ResponseEntity.status(201).body(createdCustomer);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
         Optional<CustomerDTO> customerDTO = customerService.getCustomerById(id);
         return customerDTO.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
