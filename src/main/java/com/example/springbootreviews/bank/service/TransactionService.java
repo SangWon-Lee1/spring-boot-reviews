@@ -65,7 +65,7 @@ public class TransactionService {
     }
 
     public List<TransactionDTO> getTransactionHistory(Long accountId) {
-        List<Transaction> transactions = transactionRepository.findByFromAccountId(accountId, accountId);
+        List<Transaction> transactions = transactionRepository.findByFromAccountId(accountId);
         return transactions.stream()
                 .map(this::convertToDTO).collect(Collectors.toList());
     }
