@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api")
 public class AccountController {
     private AccountService accountService;
 
@@ -18,20 +18,20 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping
+    @PostMapping("/customers")
     public ResponseEntity<AccountDTO> createAccount(@RequestBody AccountDTO accountDTO){
         AccountDTO createdAccount = accountService.createAccount(accountDTO);
         return ResponseEntity.status(201).body(createdAccount);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/customers/{id}")
     public ResponseEntity<AccountDTO> getAccountById(@PathVariable Long id) {
         Optional<AccountDTO> accountDTO = accountService.getAccountById(id);
         return accountDTO.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/customers/{id}")
     public ResponseEntity<AccountDTO> deleteAccount(@PathVariable Long id) {
         accountService.deleteAccount(id);
         return ResponseEntity.noContent().build();
