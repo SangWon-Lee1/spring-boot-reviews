@@ -55,7 +55,7 @@ public class CustomerService {
             throw new CustomerValidationException("이름이 비어있음");
         }
         if (customerDTO.getPassword() == null || !PASSWORD_PATTERN.matcher(customerDTO.getPassword()).matches()) {
-            throw new CustomerValidationException("비밀번호는 최소 8자 이상, 숫자, 대문자, 특수 문자를 포함해야 합니다.");
+            throw new CustomerValidationException("비밀번호는 최소 8자 이상, 숫자, 대소문자, 특수 문자를 포함해야 합니다.");
         }
     }
 
