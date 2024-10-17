@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank</title>
+    <link rel="stylesheet" href="/css/bank.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bank App</h1>
+        <a th:href="@{/customers/new}" class="button">고객 등록</a>
+        <a th:href="@{/accounts/new}" class="button">계좌 생성</a>
+        <a th:href="@{/customers/{id}(id=${customer.id})}" class="button">고객 조회</a>
+        <a th:href="@{/accounts/{id}(id=${account.id})}" class="button">계좌 조회</a>
+    </div>
+</body>
+</html>

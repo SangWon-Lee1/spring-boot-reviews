@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>고객 등록</title>
+    <link rel="stylesheet" href="/css/customerForm.css">
+</head>
+<body>
+<h1>고객 등록</h1>
+<form th:action="@{/customers}" method="post">
+    <label for="customerId">고객 ID:</label>
+    <input type="text" id="customerId" name="customerId" placeholder="ID 입력" required><br>
+
+    <label for="customerName">고객 이름:</label>
+    <input type="text" id="customerName" name="customerName" placeholder="이름 입력" required><br>
+
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" name="password" placeholder="8자 이상(숫자, 대소문자, 특수문자 포함)" required><br>
+
+    <div id="errorMessage" style="color: red;"></div>
+
+    <button type="submit">등록</button>
+</form>
+<a href="/bank">돌아가기</a>
+
+<script src="/js/customer.js"></script>
+</body>
+</html>
