@@ -43,6 +43,15 @@ public class CustomerService {
         return customerDTO;
     }
 
+    public boolean login(String customerId, String password) {
+        Optional<Customer> findCustomer = customerRepository.findByCustomerId(customerId);
+        if (findCustomer.isPresent()) {
+            Customer customer = findCustomer.get();
+            return customer.getPassword().equals(password);
+        }
+        return false;
+    }
+
     public Optional<CustomerDTO> getCustomerById(Long id) {
         return customerRepository.findById(id).map(this::convertToDTO);
     }
