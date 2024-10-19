@@ -2,6 +2,7 @@ package com.example.springbootreviews.bank.controller;
 
 import com.example.springbootreviews.bank.entity.Account;
 import com.example.springbootreviews.bank.entity.Customer;
+import com.example.springbootreviews.bank.model.AccountDTO;
 import com.example.springbootreviews.bank.model.CustomerDTO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -48,8 +49,12 @@ public class PageController {
     }
 
     @GetMapping("/accounts/find")
-    public String showAccountDetails(Model model) {
-        model.addAttribute("account", new Account());
+    public String showAccountDetails(Model model, HttpSession session) {
+        AccountDTO loggedInUser = (AccountDTO) session.getAttribute("loggedInUser");
+        model.addAttribute("accountId", loggedInUser.getAccountId());
+        model.addAttribute("customerId", loggedInUser.getCustomerId());
+        model.addAttribute("balance", loggedInUser.getBalance());
+        model.addAttribute("createAt", loggedInUser.getCreatedAt());
         return "bank/accountDetails";
     }
 }
