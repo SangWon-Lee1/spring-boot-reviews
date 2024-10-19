@@ -23,6 +23,9 @@ public class CustomerService {
     }
 
     public CustomerDTO registerCustomer(CustomerDTO customerDTO) {
+        if (customerRepository.findByCustomerId(customerDTO.getCustomerId()).isPresent()) {
+            throw new CustomerValidationException("이미 존재하는 고객 ID입니다.");
+        }
         validateCustomer(customerDTO);
 
         Customer customer = new Customer();
@@ -43,13 +46,15 @@ public class CustomerService {
         return customerDTO;
     }
 
-    public boolean login(String customerId, String password) {
+    public Optional<CustomerDTO> login(String customerId, String password) {
         Optional<Customer> findCustomer = customerRepository.findByCustomerId(customerId);
         if (findCustomer.isPresent()) {
             Customer customer = findCustomer.get();
-            return customer.getPassword().equals(password);
+            if (customer.getPassword().equals(password)) {
+                return Optional.of(convertToDTO(customer));
+            }
         }
-        return false;
+        return Optional.empty();
     }
 
     public Optional<CustomerDTO> getCustomerById(Long id) {

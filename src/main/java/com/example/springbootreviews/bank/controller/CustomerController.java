@@ -2,6 +2,8 @@ package com.example.springbootreviews.bank.controller;
 
 import com.example.springbootreviews.bank.model.CustomerDTO;
 import com.example.springbootreviews.bank.service.CustomerService;
+import com.mysql.cj.NativeQueryAttributesBindings;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @RequestMapping("/customers")
 public class CustomerController {
     private CustomerService customerService;
+    private NativeQueryAttributesBindings session;
 
     @Autowired
     public  CustomerController(CustomerService customerService) {
@@ -26,9 +29,10 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginCustomer(@RequestParam String customerId, @RequestParam String password) {
-        boolean login = customerService.login(customerId, password);
-        if (login) {
+    public ResponseEntity<String> loginCustomer(@RequestParam String customerId, @RequestParam String password, HttpSession session) {
+        Optional<CustomerDTO> login = customerService.login(customerId, password);
+        if (login.isPresent()) {
+            session.setAttribute("loggedInUser", login.get());
             return ResponseEntity.status(302).location(URI.create("/bank/menu")).build();
         } else {
             return ResponseEntity.status(302).location(URI.create("/bank/login")).build();
