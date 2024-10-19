@@ -47,8 +47,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id, HttpSession session) {
         customerService.deleteCustomer(id);
+        session.invalidate();
         return ResponseEntity.noContent().build();
     }
 }

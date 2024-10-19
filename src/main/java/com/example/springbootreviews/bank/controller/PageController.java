@@ -2,6 +2,8 @@ package com.example.springbootreviews.bank.controller;
 
 import com.example.springbootreviews.bank.entity.Account;
 import com.example.springbootreviews.bank.entity.Customer;
+import com.example.springbootreviews.bank.model.CustomerDTO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +39,11 @@ public class PageController {
     }
 
     @GetMapping("/customers/find")
-    public String showCustomerDetails(Model model) {
-        model.addAttribute("customer", new Customer());
+    public String showCustomerDetails(Model model, HttpSession session) {
+        CustomerDTO loggedInUser = (CustomerDTO) session.getAttribute("loggedInUser");
+        model.addAttribute("customerId", loggedInUser.getCustomerId());
+        model.addAttribute("customerName", loggedInUser.getCustomerName());
+        model.addAttribute("createdAt", loggedInUser.getCreatedAt());
         return "bank/customerDetails";
     }
 
