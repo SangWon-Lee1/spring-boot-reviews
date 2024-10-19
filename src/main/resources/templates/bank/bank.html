@@ -8,10 +8,8 @@
 <body>
     <div class="container">
         <h1>Bank App</h1>
-        <a th:href="@{/customers/new}" class="button">고객 등록</a>
-        <a th:href="@{/accounts/new}" class="button">계좌 생성</a>
-        <a th:href="@{/customers/{id}(id=${customer.id})}" class="button">고객 조회</a>
-        <a th:href="@{/accounts/{id}(id=${account.id})}" class="button">계좌 조회</a>
+        <a th:href="@{/bank/login}" class="button">로그인</a>
+        <a th:href="@{/customers/new}" class="button">회원 가입</a>
     </div>
 </body>
 </html>

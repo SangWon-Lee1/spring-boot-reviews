@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계좌 조회</title>
+</head>
+<body>
+<h1>계좌 정보</h1>
+<div>
+    <p>계좌 ID: <span th:text="${accountId}"></span></p>
+    <p>고객 ID: <span th:text="${customerId}"></span></p>
+    <p>잔액: <span th:text="${balance}"></span></p>
+    <p>계좌 생성일: <span th:text="${createdAt}"></span></p>
+</div>
+</body>
+</html>

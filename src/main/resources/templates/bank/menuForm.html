@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+    <link rel="stylesheet" href="/css/menuForm.css">
+</head>
+<body>
+<div class="container">
+    <h1>Bank App</h1>
+    <a th:href="@{/accounts/new}" class="button">계좌 생성</a>
+    <a th:href="@{/accounts/find}" class="button">계좌 조회</a>
+    <a th:href="@{/customers/find}" class="button">정보 조회</a>
+    <a th:href="@{/transaction/deposit}" class="button">입금</a>
+    <a th:href="@{/transaction/withdrawal}" class="button">출금</a>
+    <a th:href="@{/transaction/transfer}" class="button">이체</a>
+</div>
+</body>
+</html>
